@@ -1,0 +1,18 @@
+{
+    "gitProjectManager.baseProjectsFolders": ["/home/reed/src"],
+    "gitProjectManager.maxDepthRecursion": 1,
+    "gitProjectManager.openInNewWindow": true,
+    "sync.autoUpload": true,
+    "sync.autoDownload": true,
+    "workbench.colorTheme": "GitHub Dark",
+    "gitProjectManager.searchInsideProjects": false,
+    "gitProjectManager.storeRepositoriesBetweenSessions": true,
+    "redhat.telemetry.enabled": false,
+    "files.watcherExclude": {
+        "**/node_modules/*/**": false
+    },
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "terminal.integrated.fontFamily": "MesloLGS NF"
+}
