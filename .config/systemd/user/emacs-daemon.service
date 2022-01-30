@@ -1,0 +1,11 @@
+[Unit]
+Description=Spawns an emacs listener in the background
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/emacs --daemon
+Environment="DISPLAY=:0"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target

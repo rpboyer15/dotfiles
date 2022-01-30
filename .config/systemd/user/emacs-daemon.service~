@@ -1,0 +1,9 @@
+[Unit]
+Description=Spawns an emacs listener in the background
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/emacs --daemon
+
+[Install]
+WantedBy=default.target

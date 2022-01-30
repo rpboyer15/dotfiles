@@ -14,5 +14,6 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "terminal.integrated.fontFamily": "MesloLGS NF"
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.defaultProfile.linux": "zsh"
 }

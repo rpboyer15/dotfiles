@@ -73,10 +73,10 @@ awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
-    -- awful.layout.suit.fair.horizontal,
-    -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier,
@@ -360,7 +360,11 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey,           }, "r",      function()
     awful.util.spawn("rofi -show run") end,
-              {description="run rofi", group="launcher"})
+              {description="run rofi", group="launcher"}),
+
+    awful.key({ modkey,           }, "e",      function()
+    awful.util.spawn("emacsclient -c") end,
+              {description="start new emacs client", group="launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -605,3 +609,8 @@ beautiful.notification_width = 350
 -- Enable Compositor
 awful.spawn.with_shell("compton")
 
+-- Focus urgent clients automatically
+client.connect_signal("property::urgent", function(c)
+    c.minimized = false
+    c:jump_to()
+end)
