@@ -55,7 +55,8 @@ end
 beautiful.init("/home/reed/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+-- terminal = "x-terminal-emulator"
+terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -68,15 +69,15 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile,
-    awful.layout.suit.floating,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
     awful.layout.suit.fair,
+    awful.layout.suit.tile,
+    awful.layout.suit.tile.left,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.floating,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier,
@@ -303,7 +304,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Shift"   }, "l", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
