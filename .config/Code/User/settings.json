@@ -16,10 +16,10 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "editor.multiCursorModifier": "ctrlCmd",
   "debug.onTaskErrors": "showErrors",
   "workbench.colorCustomizations": {
     "tab.activeBorder": "#e07d64",
     "tab.activeBorderTop": "#212428"
-  }
+  },
+  "terminal.integrated.gpuAcceleration": "off"
 }
