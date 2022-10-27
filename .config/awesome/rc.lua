@@ -70,8 +70,8 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.fair,
     awful.layout.suit.tile,
+    awful.layout.suit.fair,
     awful.layout.suit.tile.left,
     awful.layout.suit.fair.horizontal,
 }
@@ -339,7 +339,7 @@ globalkeys = gears.table.join(
     awful.util.spawn("brave-browser") end,
               {description="open brave browser", group="launcher"}),
 
-    awful.key({ modkey,           }, "r",      function()
+    awful.key({ "Control",           }, "space",      function()
     awful.util.spawn("rofi -show run") end,
               {description="run rofi", group="launcher"}),
 
@@ -472,7 +472,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+		     size_hints_honor = false
      }
     },
 

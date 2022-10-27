@@ -21,5 +21,7 @@
     "tab.activeBorder": "#e07d64",
     "tab.activeBorderTop": "#212428"
   },
-  "terminal.integrated.gpuAcceleration": "off"
+  "terminal.integrated.gpuAcceleration": "off",
+  "editor.inlineSuggest.enabled": true,
+  "editor.mouseWheelScrollSensitivity": 0.45
 }
