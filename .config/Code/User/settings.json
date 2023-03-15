@@ -23,5 +23,6 @@
   },
   "terminal.integrated.gpuAcceleration": "off",
   "editor.inlineSuggest.enabled": true,
-  "editor.mouseWheelScrollSensitivity": 0.45
+  "editor.mouseWheelScrollSensitivity": 0.45,
+  "openapi.defaultPreviewRenderer": "redoc"
 }

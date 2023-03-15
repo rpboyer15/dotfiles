@@ -336,8 +336,8 @@ globalkeys = gears.table.join(
     
     -- Custom
     awful.key({ modkey,           }, "b",      function()
-    awful.util.spawn("brave-browser") end,
-              {description="open brave browser", group="launcher"}),
+    awful.util.spawn("google-chrome-stable") end,
+              {description="open google chrome", group="launcher"}),
 
     awful.key({ "Control",           }, "space",      function()
     awful.util.spawn("rofi -show run") end,
