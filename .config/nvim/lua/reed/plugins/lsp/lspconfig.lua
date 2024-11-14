@@ -89,6 +89,17 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    local defaultLSPs = {
+      "sourcekit",
+    }
+
+    for _, lsp in ipairs(defaultLSPs) do
+      lspconfig[lsp].setup({
+        capabilities = capabilities,
+        cmd = lsp == "sourcekit" and { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) } or nil,
+      })
+    end
+
     mason_lspconfig.setup_handlers({
       -- default handler for installed servers
       function(server_name)

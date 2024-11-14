@@ -65,7 +65,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,6 +109,7 @@ eval "$(rbenv init -)"
 # This is where pipx installed pymobiledevice3, which is a required tool to run the nvim plugin
 # xcodebuild.nvim, which is used to get xcode projects to work in nvim
 export PATH="$HOME/.local/bin:$PATH"
+
 # For managing dot files
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
