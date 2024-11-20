@@ -1,3 +1,4 @@
+-- Creates the ending pair to quotes, brackets, parenthesis, etc
 return {
   "windwp/nvim-autopairs",
   event = { "InsertEnter" },

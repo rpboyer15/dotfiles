@@ -1,3 +1,4 @@
+-- save and restore nvim sessions
 return {
   "rmagatti/auto-session",
   config = function()

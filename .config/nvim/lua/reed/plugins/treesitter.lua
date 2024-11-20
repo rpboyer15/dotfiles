@@ -1,3 +1,4 @@
+-- Better syntax highlighting
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },

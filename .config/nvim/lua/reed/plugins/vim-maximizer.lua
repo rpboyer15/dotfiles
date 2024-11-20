@@ -1,3 +1,4 @@
+-- Allows you to maximize split windows
 return {
   "szw/vim-maximizer",
   keys = {

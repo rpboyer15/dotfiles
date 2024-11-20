@@ -1,3 +1,4 @@
+-- Shortcuts for TODO flags
 return {
   "folke/todo-comments.nvim",
   event = { "BufReadPre", "BufNewFile" },

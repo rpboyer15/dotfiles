@@ -1,3 +1,4 @@
+-- Formats files when you save them (e.g. adjusts tabs and spacing)
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },

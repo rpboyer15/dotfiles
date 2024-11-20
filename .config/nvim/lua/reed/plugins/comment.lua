@@ -1,3 +1,4 @@
+-- Shorcuts for commenting
 return {
   "numToStr/Comment.nvim",
   event = { "BufReadPre", "BufNewFile" },
