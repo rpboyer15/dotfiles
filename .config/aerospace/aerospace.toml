@@ -88,15 +88,35 @@ outer.right =      10
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
 #ctrl-alt-cmd-z = 'exec-and-forget open -n /Applications/Firefox.app'
-ctrl-alt-cmd-g = '''exec-and-forget 
+ctrl-alt-cmd-z = '''exec-and-forget 
 pgrep -x "firefox" > /dev/null && /Applications/Firefox.app/Contents/MacOS/firefox --new-window || firefox &
 osascript -e 'tell application "Firefox" to activate'
 '''
 
-ctrl-alt-cmd-i = '''exec-and-forget 
-ps aux | grep -q "[w]ezterm-gui" > /dev/null && /Applications/Wezterm.app/Contents/MacOS/wezterm-gui || wezterm-gui &
-osascript -e 'tell application "wezterm-gui" to activate'
+ctrl-alt-cmd-g = '''exec-and-forget osascript -e '
+tell application "Safari"
+    make new document at end of documents
+    activate
+end tell'
 '''
+
+# ctrl-alt-cmd-i = '''exec-and-forget 
+# ps aux | grep -q "[w]ezterm-gui" > /dev/null && /Applications/Wezterm.app/Contents/MacOS/wezterm-gui || wezterm-gui &
+# osascript -e 'tell application "wezterm-gui" to activate'
+# '''
+# ctrl-alt-cmd-i = '''exec-and-forget
+# osascript -e '
+#     tell application "Ghostty"
+#         if it is running then
+#             activate
+#             make new window
+#         else
+#             launch
+#             activate
+#         end if
+#     end tell
+# '
+# '''
 
 ctrl-alt-cmd-v = '''exec-and-forget osascript -e '
 tell application "Finder"
@@ -145,15 +165,15 @@ ctrl-alt-cmd-c = 'workspace 3'
 #ctrl-alt-cmd-o = 'workspace O'
 #ctrl-alt-cmd-u = 'workspace U'
 #ctrl-alt-cmd-j = 'workspace J'
-# ctrl-alt-cmd-b = 'workspace B'
+ctrl-alt-cmd-b = 'workspace 12'
 #ctrl-alt-cmd-c = 'workspace C'
 ctrl-alt-cmd-d = 'workspace 8'
 #ctrl-alt-cmd-g = 'workspace G'
 ctrl-alt-cmd-l = 'workspace 7'
 ctrl-alt-cmd-m = 'workspace 2'
-# ctrl-alt-cmd-n = 'workspace N'
+ctrl-alt-cmd-n = 'workspace 11'
 #ctrl-alt-cmd-p = 'workspace P'
-# ctrl-alt-cmd-q = 'workspace Q'
+ctrl-alt-cmd-q = 'workspace 10'
 ctrl-alt-cmd-r = 'workspace 4'
 ctrl-alt-cmd-s = 'workspace 6'
 ctrl-alt-cmd-t = 'workspace 5'
@@ -207,7 +227,7 @@ ctrl-alt-cmd-tab = 'workspace-back-and-forth'
 #alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-alt-cmd-b = 'mode service'
+ctrl-alt-cmd-quote = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
