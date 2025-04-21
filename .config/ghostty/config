@@ -1,6 +1,11 @@
 macos-titlebar-style = hidden
 keybind = cmd+s>r=reload_config
-keybind = global:cmd+alt+ctrl+i=new_window
+keybind = global:cmd+alt+ctrl+enter=new_window
 quick-terminal-animation-duration = 0
 quick-terminal-position = center
-keybind = global:cmd+alt+ctrl+,=toggle_quick_terminal
+
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+theme = catppuccin-frappe.conf

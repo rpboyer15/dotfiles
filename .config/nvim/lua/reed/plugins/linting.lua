@@ -1,5 +1,10 @@
+-- provides asynchronous linting for various programming languages
+-- - Supports multiple linters for different file types.
+-- - Runs linting automatically on file open, save, and after exiting insert mode.
+-- - Allows manual linting via <leader>l.
 return {
   "mfussenegger/nvim-lint",
+  enabled = false,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lint = require("lint")

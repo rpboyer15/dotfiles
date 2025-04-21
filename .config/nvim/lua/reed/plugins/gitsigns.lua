@@ -1,5 +1,7 @@
+-- provides Git integration for Neovim, displaying inline Git changes and offering various Git-related actions
 return {
   "lewis6991/gitsigns.nvim",
+  enabled = false,
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     on_attach = function(bufnr)

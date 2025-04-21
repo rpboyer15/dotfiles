@@ -113,3 +113,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # For managing dot files
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# Add go directory so you can execute binaries without specifying their path
+export PATH=$PATH:/Users/reed/go/bin
+
+
+
