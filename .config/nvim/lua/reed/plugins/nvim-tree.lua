@@ -1,10 +1,4 @@
 -- Provides a file explores with a tree-like structure
---
--- Keybindings:
---  - <leader>ee → Toggle file explorer.
---  - <leader>ef → Toggle file explorer focused on the current file.
---  - <leader>ec → Collapse file explorer.
---  - <leader>er → Refresh file explorer.
 
 return {
 	"nvim-tree/nvim-tree.lua",

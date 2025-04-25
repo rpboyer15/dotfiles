@@ -32,4 +32,3 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
-

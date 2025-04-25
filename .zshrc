@@ -65,7 +65,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,6 +115,3 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Add go directory so you can execute binaries without specifying their path
 export PATH=$PATH:/Users/reed/go/bin
-
-
-
