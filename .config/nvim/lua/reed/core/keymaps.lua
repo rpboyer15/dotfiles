@@ -31,7 +31,7 @@ keymap.set("n", "<M-h>", ":vertical resize -5<CR>", { desc = "Decrease width" })
 
 -- Tab navigation
 keymap.set("n", "<M-t>", "<cmd>tabnew<CR>", { desc = "New tab" })
-keymap.set("n", "<M-q>", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+-- keymap.set("n", "<M-q>", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 keymap.set("n", "<M-s>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<M-r>", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
