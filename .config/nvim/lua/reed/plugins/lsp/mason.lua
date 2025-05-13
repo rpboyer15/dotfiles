@@ -1,7 +1,6 @@
 -- provides an easy way to install and manage LSP servers, formatters, and linters in Neovim
 return {
 	"mason-org/mason.nvim",
-	enable = true,
 	dependencies = {
 		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",

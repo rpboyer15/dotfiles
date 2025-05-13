@@ -1,7 +1,6 @@
 -- provides improved syntax highlighting, indentation, and incremental selection
 return {
 	"nvim-treesitter/nvim-treesitter",
-	enabled = true,
 	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	dependencies = {

@@ -10,8 +10,6 @@ return {
 	},
 	config = function()
 		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local lspconfig = require("lspconfig")
 		local keymap = vim.keymap -- for conciseness
 
 		-- sets up keybindings only when an LSP attaches to a file
@@ -73,12 +71,6 @@ return {
 			end,
 		})
 
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-		})
-
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -86,18 +78,6 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-
-		-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-		-- 	vim.lsp.handlers.hover,
-		-- 	{ border = "rounded" }
-		-- )
-		--
-		-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-		-- 	vim.lsp.handlers.signature_help,
-		-- 	{
-		-- 		border = "rounded"
-		-- 	}
-		-- )
 
 		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 		function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -117,6 +97,7 @@ return {
 		-- https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
 		-- But to start just follow what's suggested in https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 		vim.lsp.config("lua_ls", {
+			-- capabilities = capabilities,
 			on_init = function(client)
 				if client.workspace_folders then
 					local path = client.workspace_folders[1].name
@@ -139,6 +120,9 @@ return {
 							"lua/?.lua",
 							"lua/?/init.lua",
 						},
+					},
+					diagnostics = {
+						globals = { "vim" },
 					},
 					-- Make the server aware of Neovim runtime files
 					workspace = {
