@@ -8,22 +8,21 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
-	config = function()
-		local telescope = require("telescope")
-		local actions = require("telescope.actions")
-
-		telescope.setup({
-			defaults = {
-				path_display = { "smart" },
-				mappings = {
-					i = {
-						["<C-o>"] = actions.move_selection_previous, -- move to prev result
-						["<C-a>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-					},
+	opts = {
+		defaults = {
+			path_display = { "smart" },
+			mappings = {
+				i = {
+					["<C-q>"] = require("telescope.actions").send_selected_to_qflist
+						+ require("telescope.actions").open_qflist,
 				},
 			},
-		})
+		},
+	},
+	config = function(_, opts)
+		local telescope = require("telescope")
+
+		telescope.setup(opts)
 
 		telescope.load_extension("fzf")
 

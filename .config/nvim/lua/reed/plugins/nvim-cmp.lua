@@ -7,18 +7,6 @@
 --  - Displays VS Code-like icons using lspkind.
 --  - Scrollable documentation in the completion menu.
 --  - Custom key mappings for navigating completion suggestions.
---
--- Keybindings:
---  - <C-o> → Previous suggestion.
---  - <C-a> → Next suggestion.
---  - <C-u> / <C-d> → Scroll documentation up/down.
---  - <C-Space> → Show completion suggestions.
---  - <C-e> → Close completion window.
---  - <CR> → Confirm selection.
---
--- Notes:
--- - Autocompletion is disabled in Markdown files.
--- - Snippets are auto-loaded from friendly-snippets.
 
 return {
 	"hrsh7th/nvim-cmp",
@@ -53,16 +41,11 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-				["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
-				-- ["<C-u>"] = cmp.mapping.scroll_docs(-4), --these don't seem to be working properly
-				-- ["<C-d>"] = cmp.mapping.scroll_docs(4),  --these don't seem to be working properly
+				["<C-u>"] = cmp.mapping.scroll_docs(-4), --these don't seem to be working properly
+				["<C-d>"] = cmp.mapping.scroll_docs(4), --these don't seem to be working properly
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
-				-- allows down key to move cursor instead of scrolling list
-				["<Down>"] = function(fallback) fallback() end,
-				["<Up>"] = function(fallback) fallback() end,
 			}),
 			-- Gives autocomplete window a border
 			window = {
@@ -74,6 +57,7 @@ return {
 				{ name = "nvim_lsp" }, -- pulls completion data from any active LSP
 				{ name = "luasnip" }, -- snippets
 				{ name = "path" }, -- file system paths
+				-- { name = "buffer" }, -- words in current buffer
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu
@@ -84,5 +68,5 @@ return {
 				}),
 			},
 		})
-	end
+	end,
 }

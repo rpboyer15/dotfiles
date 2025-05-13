@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
-
 -- Escape sequence
 keymap.set("i", ".-", "<ESC>", { desc = "Exit insert mode with .-" })
 

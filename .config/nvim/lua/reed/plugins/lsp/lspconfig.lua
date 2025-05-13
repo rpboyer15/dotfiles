@@ -9,30 +9,9 @@ return {
 		{ "folke/neodev.nvim",                   opts = {} },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
-
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			-- you can intall more via meno from `:Mason` command
-			ensure_installed = {
-				"gopls", -- Go LSP
-				"bashls", -- Bash LSP
-				"jsonls", -- JSON LSP
-				"yamlls", -- YAML (optional)
-				"lua_ls", -- Lua (for Neovim config)
-				"marksman", -- Markdown LSP
-				"dockerls", -- Dockerfile LSP
-				"sqls", -- SQL LSP			
-			},
-			automatic_installation = true,
-		})
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
+		local lspconfig = require("lspconfig")
 		local keymap = vim.keymap -- for conciseness
 
 		-- sets up keybindings only when an LSP attaches to a file
@@ -71,11 +50,13 @@ return {
 				opts.desc = "Show line diagnostics"
 				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.jump({ count = -1 })
+				end, { desc = "Go to previous diagnostic" })
 
-				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.jump({ count = 1 })
+				end, { desc = "Go to next diagnostic" })
 
 				opts.desc = "Show documentation for what is under cursor"
 				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -94,6 +75,9 @@ return {
 
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
+		lspconfig["lua_ls"].setup({
+			capabilities = capabilities,
+		})
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
@@ -122,30 +106,52 @@ return {
 			return orig_util_open_floating_preview(contents, syntax, opts, ...)
 		end
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
+		-- vim.lsp.config is a neovim function that registers a config for the LSP
+		-- server, in this case the one named lua_ls.
+		-- For a list of other LSP servers, see https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+		-- settings = { ... } is passed to the language server as part of the LSP
+		-- initialization handshake.
+		-- Everything under settings are configs from the language server itself.
+		-- You need to go to the lua-language-server docs to determine what config
+		-- options are available to put here.
+		-- https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
+		-- But to start just follow what's suggested in https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+		vim.lsp.config("lua_ls", {
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if
+						path ~= vim.fn.stdpath("config")
+						and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+					then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						-- Tell the language server which version of Lua you're using (most
+						-- likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+						-- Tell the language server how to find Lua modules same way as Neovim
+						-- (see `:h lua-module-load`)
+						path = {
+							"lua/?.lua",
+							"lua/?/init.lua",
+						},
+					},
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
 						},
 					},
 				})
 			end,
+			settings = {
+				Lua = {},
+			},
 		})
 	end,
 }

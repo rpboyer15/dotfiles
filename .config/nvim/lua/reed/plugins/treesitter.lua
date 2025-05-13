@@ -1,5 +1,4 @@
 -- provides improved syntax highlighting, indentation, and incremental selection
-
 return {
 	"nvim-treesitter/nvim-treesitter",
 	enabled = true,
@@ -7,12 +6,10 @@ return {
 	build = ":TSUpdate",
 	dependencies = {
 		"windwp/nvim-ts-autotag",
+		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function()
-		-- import nvim-treesitter plugin
 		local treesitter = require("nvim-treesitter.configs")
-
-		-- configure treesitter
 		treesitter.setup({
 			modules = {},
 			highlight = {
@@ -23,6 +20,18 @@ return {
 			-- enable autotagging (w/ nvim-ts-autotag plugin)
 			autotag = {
 				enable = true,
+			},
+			textobjects = {
+				select = {
+					enable = true,
+					lookahead = true, -- automatically jump forward to the textobject
+					keymaps = {
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
+						["ac"] = "@class.outer",
+						["ic"] = "@class.inner",
+					},
+				},
 			},
 			-- ensure these language parsers are installed
 			ensure_installed = {
@@ -39,6 +48,7 @@ return {
 				"lua",
 				"markdown",
 				"markdown_inline",
+				"python",
 				"query",
 				"swift",
 				"sql",
