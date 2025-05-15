@@ -127,8 +127,11 @@ tell application "Finder"
 end tell'
 '''
 
+# Maximize window
+ctrl-alt-cmd-p = 'fullscreen'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-ctrl-alt-cmd-slash = 'layout tiles horizontal vertical'
+ctrl-alt-cmd-period = 'layout tiles horizontal vertical'
 ctrl-alt-cmd-minus = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
@@ -223,8 +226,6 @@ ctrl-alt-cmd-shift-w = 'move-node-to-workspace 9'
 ctrl-alt-cmd-shift-x = 'move-node-to-workspace 1'
 #ctrl-alt-cmd-shift-y = 'move-node-to-workspace Y'
 #ctrl-alt-cmd-shift-z = 'move-node-to-workspace Z'
-
-ctrl-alt-cmd-period = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 ctrl-alt-cmd-tab = 'workspace-back-and-forth'

@@ -57,7 +57,7 @@ return {
 				end, { desc = "Go to next diagnostic" })
 
 				opts.desc = "Show documentation for what is under cursor"
-				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+				keymap.set("n", "D", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -71,13 +71,28 @@ return {
 			end,
 		})
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- local lspconfig = require("lspconfig")
+		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		--
+		-- lspconfig.gopls.setup({
+		-- 	capabilities = cmp_nvim_lsp.default_capabilities(),
+		-- })
+
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+			-- (optional) enable other diagnostic UI features
+			virtual_text = true,
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
+		})
 
 		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 		function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)

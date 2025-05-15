@@ -40,17 +40,6 @@ return {
 				"sqls", -- SQL LSP
 				"yamlls", -- YAML (optional)
 			},
-			-- handlers = {
-			-- 	-- Default setup for all installed servers
-			-- 	function(server_name)
-			-- 		lspconfig[server_name].setup({
-			-- 			capabilities = capabilities,
-			-- 			on_attach = function(_, bufnr)
-			-- 				-- your on_attach logic (e.g. keymaps) here
-			-- 			end,
-			-- 		})
-			-- 	end,
-			-- },
 			automatic_installation = true,
 		})
 
