@@ -146,14 +146,6 @@ ctrl-alt-cmd-shift-a = 'move down'
 ctrl-alt-cmd-shift-o = 'move up'
 ctrl-alt-cmd-shift-e = 'move right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
-# ctrl-alt-cmd-f = 'resize smart -50'
-# ctrl-alt-cmd-u = 'resize smart +50'
-ctrl-alt-cmd-left = 'resize width -50'
-ctrl-alt-cmd-right = 'resize width +50'
-ctrl-alt-cmd-down = 'resize height -50'
-ctrl-alt-cmd-up = 'resize height +50'
-
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 #ctrl-alt-cmd-1 = 'workspace 1'
 #ctrl-alt-cmd-2 = 'workspace 2'
@@ -241,10 +233,12 @@ ctrl-alt-cmd-quote = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-#backspace = ['close-all-windows-but-current', 'mode main']
 
-# sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-#s = ['layout sticky tiling', 'mode main']
+# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+ctrl-alt-cmd-h = 'resize width -50'
+ctrl-alt-cmd-e = 'resize width +50'
+ctrl-alt-cmd-a = 'resize height -50'
+ctrl-alt-cmd-o = 'resize height +50'
 
 ctrl-alt-cmd-shift-h = ['join-with left', 'mode main']
 ctrl-alt-cmd-shift-a = ['join-with down', 'mode main']
@@ -253,5 +247,4 @@ ctrl-alt-cmd-shift-e = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.FaceTime'
-run = "layout floating"
-
+run = "layout floatingo
