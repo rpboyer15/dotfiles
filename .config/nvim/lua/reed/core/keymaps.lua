@@ -35,3 +35,6 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- Replace text
 -- keymap.set("v", "<leader>s", "hy:%s/<C-r>h//g<Left><Left>")
+keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true, silent = false })
+-- Search and replace (add c for confirmation)
+keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true, silent = false })

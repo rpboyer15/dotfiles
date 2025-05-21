@@ -22,7 +22,7 @@ return {
 
 				-- set keybinds
 				opts.desc = "Show LSP references"
-				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
 				opts.desc = "Go to declaration"
 				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
@@ -174,6 +174,11 @@ return {
 					},
 				},
 			},
+		})
+		vim.lsp.config("ruff", {
+			on_init = function(client)
+				client.offset_encoding = "utf-16"
+			end,
 		})
 	end,
 }
