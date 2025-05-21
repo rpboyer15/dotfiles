@@ -115,3 +115,9 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Add go directory so you can execute binaries without specifying their path
 export PATH=$PATH:/Users/reed/go/bin
+
+# Initializes pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"

@@ -7,9 +7,11 @@ return {
 		vim.o.timeoutlen = 500
 	end,
 	opts = {
+		preset = "helix",
 		win = {
 			border = "rounded",
-		}
+			-- col = 50,
+		},
 	},
 	config = function(_, opts)
 		require("which-key").setup(opts)

@@ -9,8 +9,8 @@ keymap.set("n", "<leader>vh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>p", '"_dwP', { desc = "Replace word with clipboard contents" })
 
 -- Pane management
-keymap.set("n", "<M-p>", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<M-->", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<M-v>", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<M-z>", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<M-=>", "<C-w>=", { desc = "Equalize splits" })
 keymap.set("n", "<M-q>", "<cmd>close<CR>", { desc = "Close current split" })
 

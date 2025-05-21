@@ -44,30 +44,30 @@ outer.right =      10
 
 # All possible modifiers: cmd, alt, ctrl, shift
 
-ctrl-alt-cmd-period = 'fullscreen'
-ctrl-alt-cmd-p = 'layout tiles horizontal vertical'
-ctrl-alt-cmd-minus = 'layout accordion horizontal vertical'
+ctrl-alt-cmd-g = 'fullscreen'
+ctrl-alt-cmd-v = 'layout tiles horizontal vertical'
+ctrl-alt-cmd-z = 'layout accordion horizontal vertical'
 ctrl-alt-cmd-tab = 'workspace-back-and-forth'
 
-ctrl-alt-cmd-z = '''exec-and-forget
+ctrl-alt-cmd-p = '''exec-and-forget osascript -e '
+tell application "Safari"
+    make new document at end of documents
+    activate
+end tell'
+'''
+ctrl-alt-cmd-period = '''exec-and-forget osascript -e '
+tell application "Finder"
+    set target of (make new Finder window) to (path to downloads folder)
+    activate
+end tell'
+'''
+ctrl-alt-cmd-minus = '''exec-and-forget
 if pgrep -x "firefox" > /dev/null; then
   /Applications/Firefox.app/Contents/MacOS/firefox --new-window
 else
   firefox &
 fi
 osascript -e 'tell application "Firefox" to activate'
-'''
-ctrl-alt-cmd-g = '''exec-and-forget osascript -e '
-tell application "Safari"
-    make new document at end of documents
-    activate
-end tell'
-'''
-ctrl-alt-cmd-v = '''exec-and-forget osascript -e '
-tell application "Finder"
-    set target of (make new Finder window) to (path to downloads folder)
-    activate
-end tell'
 '''
 
 #----- Navigation -----

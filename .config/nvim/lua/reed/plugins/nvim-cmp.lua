@@ -41,11 +41,15 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
+				["<Tab>"] = cmp.mapping.select_next_item(),
+				["<S-Tab>"] = cmp.mapping.select_prev_item(),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4), --these don't seem to be working properly
 				["<C-d>"] = cmp.mapping.scroll_docs(4), --these don't seem to be working properly
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<Up>"] = cmp.config.disable,
+				["<Down>"] = cmp.config.disable,
 			}),
 			-- Gives autocomplete window a border
 			window = {

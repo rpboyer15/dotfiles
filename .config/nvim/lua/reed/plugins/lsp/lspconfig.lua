@@ -46,7 +46,17 @@ return {
 				keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
 				opts.desc = "Show line diagnostics"
-				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+				keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts) -- show diagnostics for line
+
+				opts.desc = "Show source of diagnostic"
+				vim.keymap.set("n", "<leader>ds", function()
+					local diag = vim.diagnostic.get(0)[1]
+					if diag then
+						print("Diagnostic source: " .. (diag.source or "unknown"))
+					else
+						print("No diagnostic available")
+					end
+				end, { desc = "Show diagnostic source" })
 
 				vim.keymap.set("n", "[d", function()
 					vim.diagnostic.jump({ count = -1 })
@@ -150,6 +160,19 @@ return {
 			end,
 			settings = {
 				Lua = {},
+			},
+		})
+		vim.lsp.config("pyright", {
+			settings = {
+				python = {
+					pythonPath = vim.fn.getcwd() .. "/.venv/bin/python",
+					analysis = {
+						extraPaths = { vim.fn.getcwd() .. "/.venv/lib/python3.11/site-packages" },
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "workspace", -- optional but recommended
+					},
+				},
 			},
 		})
 	end,

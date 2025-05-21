@@ -37,6 +37,7 @@ return {
 				"jsonls", -- JSON LSP
 				"lua_ls", -- Lua (for Neovim config)
 				"marksman", -- Markdown LSP
+				"pyright", -- python LSP
 				"sqls", -- SQL LSP
 				"yamlls", -- YAML (optional)
 			},
@@ -54,7 +55,7 @@ return {
 				"goimports", -- Go auto-import + formatter
 				"golangci-lint", -- Go linter
 				"prettier", -- for markdown/json/yaml/html
-				"pylint", -- python linter
+				"ruff", -- python linter
 				"shfmt", -- Bash formatting
 				"sqlfluff", -- optional, SQL linter/formatter
 				"stylua", -- Lua formatter
