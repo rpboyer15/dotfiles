@@ -82,6 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR="nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -103,18 +104,14 @@ source $ZSH/oh-my-zsh.sh
 alias ls="eza --color=always --long --git --no-filesize --no-time --no-user --no-permissions"
 
 # Run rbenv on startup. Important to use rbenv ruby version manager when installing gems
-# go you're not using system version of ruby
+# so you're not using system version of ruby
 eval "$(rbenv init -)"
-
-# This is where pipx installed pymobiledevice3, which is a required tool to run the nvim plugin
-# xcodebuild.nvim, which is used to get xcode projects to work in nvim
-export PATH="$HOME/.local/bin:$PATH"
 
 # For managing dot files
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Add go directory so you can execute binaries without specifying their path
-export PATH=$PATH:/Users/reed/go/bin
+export PATH="$HOME/go/bin:$PATH"
 
 # Initializes pyenv
 export PYENV_ROOT="$HOME/.pyenv"

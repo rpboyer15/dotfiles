@@ -32,6 +32,7 @@ return {
 			-- restore your setup with dotfiles.
 			ensure_installed = {
 				"bashls", -- Bash LSP
+				"clangd", -- C++ LSP
 				"dockerls", -- Dockerfile LSP
 				"gopls", -- Go LSP
 				"jsonls", -- JSON LSP
@@ -50,12 +51,12 @@ return {
 			-- Apply formatters in conform.lua and linters in linting.lua
 			ensure_installed = {
 				"eslint_d", --
+				"clang-format", -- C++
 				"isort", -- sorts python imports
 				"gofumpt", -- strict Go formatter
 				"goimports", -- Go auto-import + formatter
 				"golangci-lint", -- Go linter
 				"prettier", -- for markdown/json/yaml/html
-				"ruff", -- python linter
 				"shfmt", -- Bash formatting
 				"sqlfluff", -- optional, SQL linter/formatter
 				"stylua", -- Lua formatter

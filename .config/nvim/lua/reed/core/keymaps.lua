@@ -6,7 +6,7 @@ keymap.set("i", ".-", "<ESC>", { desc = "Exit insert mode with .-" })
 
 keymap.set("n", "<leader>vh", ":nohl<CR>", { desc = "Clear search highlights" })
 
-keymap.set("n", "<leader>p", '"_dwP', { desc = "Replace word with clipboard contents" })
+keymap.set("n", "<leader>p", '"_diwP', { desc = "Replace word with clipboard contents" })
 
 -- Pane management
 keymap.set("n", "<M-v>", "<C-w>v", { desc = "Split window vertically" })
@@ -35,6 +35,5 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- Replace text
 -- keymap.set("v", "<leader>s", "hy:%s/<C-r>h//g<Left><Left>")
-keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true, silent = false })
 -- Search and replace (add c for confirmation)
 keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap = true, silent = false })

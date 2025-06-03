@@ -32,9 +32,11 @@ return {
 			mappings = {
 				i = {
 					["<C-q>"] = smart_send_to_qflist,
+					["<C-t>"] = actions.select_tab,
 				},
 				n = {
 					["<C-q>"] = smart_send_to_qflist,
+					["<C-t>"] = actions.select_tab,
 				},
 			},
 		},
