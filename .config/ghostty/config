@@ -9,3 +9,4 @@ font-feature = -liga
 font-feature = -dlig
 
 theme = catppuccin-frappe.conf
+keybind = shift+enter=text:\n
