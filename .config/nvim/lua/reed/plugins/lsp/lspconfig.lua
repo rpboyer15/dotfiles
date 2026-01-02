@@ -71,13 +71,6 @@ return {
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = ev.buf,
-					callback = function()
-						vim.lsp.buf.format({ async = false })
-					end,
-				})
 			end,
 		})
 

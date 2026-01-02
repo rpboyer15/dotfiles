@@ -45,8 +45,8 @@ outer.right =      10
 # All possible modifiers: cmd, alt, ctrl, shift
 
 ctrl-alt-cmd-g = 'fullscreen'
-ctrl-alt-cmd-v = 'layout tiles horizontal vertical'
-ctrl-alt-cmd-z = 'layout accordion horizontal vertical'
+ctrl-alt-cmd-n = 'layout tiles horizontal vertical'
+ctrl-alt-cmd-v = 'layout accordion horizontal vertical'
 ctrl-alt-cmd-tab = 'workspace-back-and-forth'
 
 ctrl-alt-cmd-quote = '''exec-and-forget osascript -e '
@@ -76,6 +76,7 @@ ctrl-alt-cmd-a = 'focus down'
 ctrl-alt-cmd-o = 'focus up'
 ctrl-alt-cmd-e = 'focus right'
 
+ctrl-alt-cmd-space = 'workspace 0'
 ctrl-alt-cmd-x = 'workspace 1'
 ctrl-alt-cmd-m = 'workspace 2'
 ctrl-alt-cmd-c = 'workspace 3'
@@ -106,7 +107,7 @@ ctrl-alt-cmd-shift-w = 'move-node-to-workspace 9'
 # ▶ Service Mode
 # ───────────────────────────────
 
-ctrl-alt-cmd-esc = 'mode service'
+ctrl-alt-cmd-backslash = 'mode service'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
