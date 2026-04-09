@@ -2,6 +2,7 @@
 # ▶ Startup Settings
 # ───────────────────────────────
 
+# To restart borders service run: brew services restart borders
 after-startup-command = [
   'exec-and-forget /opt/homebrew/bin/borders active_color=0xFFF9E2AF inactive_color=0xff494d64 width=5.0'
 ]
@@ -47,6 +48,7 @@ outer.right =      10
 ctrl-alt-cmd-g = 'fullscreen'
 ctrl-alt-cmd-n = 'layout tiles horizontal vertical'
 ctrl-alt-cmd-v = 'layout accordion horizontal vertical'
+ctrl-alt-cmd-period = 'layout tiles accordion'
 ctrl-alt-cmd-tab = 'workspace-back-and-forth'
 
 ctrl-alt-cmd-quote = '''exec-and-forget osascript -e '
@@ -76,7 +78,7 @@ ctrl-alt-cmd-a = 'focus down'
 ctrl-alt-cmd-o = 'focus up'
 ctrl-alt-cmd-e = 'focus right'
 
-ctrl-alt-cmd-space = 'workspace 0'
+ctrl-alt-cmd-equal = 'workspace 0'
 ctrl-alt-cmd-x = 'workspace 1'
 ctrl-alt-cmd-m = 'workspace 2'
 ctrl-alt-cmd-c = 'workspace 3'
@@ -93,6 +95,7 @@ ctrl-alt-cmd-shift-a = 'move down'
 ctrl-alt-cmd-shift-o = 'move up'
 ctrl-alt-cmd-shift-e = 'move right'
 
+ctrl-alt-cmd-shift-equal = 'move-node-to-workspace 0'
 ctrl-alt-cmd-shift-x = 'move-node-to-workspace 1'
 ctrl-alt-cmd-shift-m = 'move-node-to-workspace 2'
 ctrl-alt-cmd-shift-c = 'move-node-to-workspace 3'

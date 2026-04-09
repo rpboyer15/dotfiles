@@ -12,4 +12,3 @@ theme = catppuccin-frappe.conf
 keybind = shift+enter=text:\n
 
 command = ~/.config/ghostty/tmux_launch.sh
-

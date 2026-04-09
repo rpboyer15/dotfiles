@@ -1,39 +1,15 @@
 -- provides improved syntax highlighting, indentation, and incremental selection
 return {
-	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
-	build = ":TSUpdate",
-	dependencies = {
-		"windwp/nvim-ts-autotag",
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
-	config = function()
-		local treesitter = require("nvim-treesitter.configs")
-		treesitter.setup({
-			modules = {},
-			highlight = {
-				enable = true,
-			},
-			-- enable indentation
-			indent = { enable = true },
-			-- enable autotagging (w/ nvim-ts-autotag plugin)
-			autotag = {
-				enable = true,
-			},
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true, -- automatically jump forward to the textobject
-					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-					},
-				},
-			},
-			-- ensure these language parsers are installed
-			ensure_installed = {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter").setup()
+
+			-- install parsers
+			require("nvim-treesitter").install({
 				"bash",
 				"c",
 				"css",
@@ -58,26 +34,46 @@ return {
 				"vimdoc",
 				"yaml",
 				"zig",
-			},
+			})
 
-			sync_install = false,
-			auto_install = true,
-			ignore_install = {},
-
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
+			-- enable treesitter highlighting and indentation for all filetypes with a parser
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					if pcall(vim.treesitter.start) then
+						vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
+				end,
+			})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		branch = "main",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("nvim-treesitter-textobjects").setup({
+				select = {
+					lookahead = true,
 				},
-			},
-			-- rainbow bracket config needs work
-			-- rainbow = {
-			-- 	enable = true,
-			-- 	query = "rainbow-parens",
-			-- },
-		})
-	end,
+			})
+
+			-- textobject keymaps
+			local select_textobject = function(query)
+				return function()
+					require("nvim-treesitter-textobjects.select").select_textobject(query, "textobjects")
+				end
+			end
+
+			vim.keymap.set({ "x", "o" }, "af", select_textobject("@function.outer"))
+			vim.keymap.set({ "x", "o" }, "if", select_textobject("@function.inner"))
+			vim.keymap.set({ "x", "o" }, "ac", select_textobject("@class.outer"))
+			vim.keymap.set({ "x", "o" }, "ic", select_textobject("@class.inner"))
+		end,
+	},
 }
