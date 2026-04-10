@@ -40,6 +40,7 @@ return {
 				"marksman", -- Markdown LSP
 				"pyright", -- python LSP
 				"sqls", -- SQL LSP
+				"ts_ls", -- TypeScript/JavaScript LSP
 				"yamlls", -- YAML (optional)
 			},
 			automatic_installation = true,
