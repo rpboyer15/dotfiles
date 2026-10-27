@@ -1,4 +1,4 @@
-macos-titlebar-style = hidden
+#macos-titlebar-style = hidden
 keybind = cmd+s>r=reload_config
 keybind = global:cmd+alt+ctrl+enter=new_window
 quick-terminal-animation-duration = 0

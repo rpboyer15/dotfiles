@@ -17,7 +17,7 @@ keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { noremap =
 keymap.set("n", "<M-v>", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<M-z>", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<M-=>", "<C-w>=", { desc = "Equalize splits" })
-keymap.set("n", "<M-q>", "<cmd>close<CR>", { desc = "Close current split" })
+keymap.set("n", "<M-x>", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Pane resizing
 keymap.set("n", "<leader>ro", ":resize +5<CR>", { desc = "Increase height" })
