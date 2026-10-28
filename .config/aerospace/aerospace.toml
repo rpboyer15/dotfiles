@@ -58,12 +58,12 @@ tell application "Safari"
 end tell'
 '''
 ctrl-alt-cmd-y = '''exec-and-forget
-if pgrep -x "firefox" > /dev/null; then
-  /Applications/Firefox.app/Contents/MacOS/firefox --new-window
+if pgrep -x "mullvadbrowser" > /dev/null; then
+  "/Applications/Mullvad Browser.app/Contents/MacOS/mullvadbrowser" --new-window
 else
-  firefox &
+  open -a "Mullvad Browser"
 fi
-osascript -e 'tell application "Firefox" to activate'
+osascript -e 'tell application "Mullvad Browser" to activate'
 '''
 ctrl-alt-cmd-k = '''exec-and-forget osascript -e '
 tell application "Finder"

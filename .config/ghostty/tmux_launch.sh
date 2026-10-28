@@ -15,4 +15,4 @@ fi
 SESSION_NAME="ghostty"
 
 # Attach if session exists, otherwise create then attach
-exec tmux new-session -A -s ghostty /opt/homebrew/bin/nu
+exec tmux new-session -A -s "$SESSION_NAME"
