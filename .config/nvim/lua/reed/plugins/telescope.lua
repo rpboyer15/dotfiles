@@ -1,10 +1,10 @@
 -- Provides fuzzy finding and searching capabilities in Neovim
 
 -- 📦 Custom smart C-q action: send selected or all entries to quickfix
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-
+-- Telescope modules are required lazily so this spec can load before the plugin is installed
 local function smart_send_to_qflist(prompt_bufnr)
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
 	local picker = action_state.get_current_picker(prompt_bufnr)
 	local selections = picker:get_multi_selection()
 
@@ -26,21 +26,24 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 	},
-	opts = {
-		defaults = {
-			path_display = { "smart" },
-			mappings = {
-				i = {
-					["<C-q>"] = smart_send_to_qflist,
-					["<C-t>"] = actions.select_tab,
-				},
-				n = {
-					["<C-q>"] = smart_send_to_qflist,
-					["<C-t>"] = actions.select_tab,
+	opts = function()
+		local actions = require("telescope.actions")
+		return {
+			defaults = {
+				path_display = { "smart" },
+				mappings = {
+					i = {
+						["<C-q>"] = smart_send_to_qflist,
+						["<C-t>"] = actions.select_tab,
+					},
+					n = {
+						["<C-q>"] = smart_send_to_qflist,
+						["<C-t>"] = actions.select_tab,
+					},
 				},
 			},
-		},
-	},
+		}
+	end,
 	config = function(_, opts)
 		local telescope = require("telescope")
 
